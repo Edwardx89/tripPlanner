@@ -4,8 +4,8 @@ const nunjucks = require('nunjucks');
 const bodyParser = require('body-parser');
 const volleyball = require('volleyball');
 const router = require('./routes');
-
-
+const sequelize = require('sequelize');
+const db = require('./models').db;
 
 const app = express();
 
@@ -39,3 +39,6 @@ const PORT = 3000;
 app.listen(PORT, function() {
   console.log('listening impatiently on port', PORT);
 })
+
+
+db.sync({})
