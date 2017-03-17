@@ -1,8 +1,18 @@
 {% extends "layout.html" %}
 
 {% block content %}
-{{templateHotels}}
-{{templateRestaurants}}
-{{templateActivities}}
-<h1>Hellooooooo!</h1>
+
+{% for hotel in templateHotels %}
+<p>{{hotel}}</p>
+{% endfor %}
+
+{% for restaurant in templateRestaurants %}
+<p>{{restaurant}}</p>
+{% endfor %}
+
+{% for activity in templateActivities %}
+<p>{{activity}}</p>
+{% endfor %}
+
 {% endblock %}
+

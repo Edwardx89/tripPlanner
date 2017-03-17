@@ -5,6 +5,7 @@ const Restaurant = models.Restaurant
 const Hotel = models.Hotel;
 const Activity = models.Activity;
 
+
 router.get('/', function(req, res, next) {
 var outerScopeContainer = {};
 Hotel.findAll()

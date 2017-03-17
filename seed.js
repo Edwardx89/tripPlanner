@@ -62,27 +62,27 @@ var data = {
   ]
 };
 
-// db.sync()
-// .then(function () {
-//   console.log("Dropped old data, now inserting data");
-//   const creatingHotels = Promise.map(data.hotels, function (hotel) {
-//     return Hotel.create(hotel, { include: [Place] });
-//   });
-//   const creatingRestaurants = Promise.map(data.restaurants, function (restaurant) {
-//     return Restaurant.create(restaurant, { include: [Place] });
-//   });
-//   const creatingActivities = Promise.map(data.activities, function (activity) {
-//     return Activity.create(activity, { include: [Place] });
-//   });
-//   return Promise.all([creatingHotels, creatingRestaurants, creatingActivities]);
-// })
-// .then(function () {
-//   console.log('Finished inserting data');
-// })
-// .catch(function (err) {
-//   console.error('There was totally a problem', err, err.stack);
-// })
-// .finally(function () {
-//   db.close(); // creates but does not return a promise
-//   return null; // stops bluebird from complaining about un-returned promise
-// });
+db.sync()
+.then(function () {
+  console.log("Dropped old data, now inserting data");
+  const creatingHotels = Promise.map(data.hotels, function (hotel) {
+    return Hotel.create(hotel, { include: [Place] });
+  });
+  const creatingRestaurants = Promise.map(data.restaurants, function (restaurant) {
+    return Restaurant.create(restaurant, { include: [Place] });
+  });
+  const creatingActivities = Promise.map(data.activities, function (activity) {
+    return Activity.create(activity, { include: [Place] });
+  });
+  return Promise.all([creatingHotels, creatingRestaurants, creatingActivities]);
+})
+.then(function () {
+  console.log('Finished inserting data');
+})
+.catch(function (err) {
+  console.error('There was totally a problem', err, err.stack);
+})
+.finally(function () {
+  db.close(); // creates but does not return a promise
+  return null; // stops bluebird from complaining about un-returned promise
+});
