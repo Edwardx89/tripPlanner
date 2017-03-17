@@ -19,7 +19,9 @@ app.engine('html', nunjucks.render)
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.use(express.static(path.join(__dirname, '/public')));
+app.use('/public', express.static(path.join(__dirname, '/public')));
+app.use('/bootstrap', express.static(path.join(__dirname, './node_modules/bootstrap/dist')));
+app.use('/jquery', express.static(path.join(__dirname, './node_modules/jquery/tmp')));
 
 app.use('/', router);
 
